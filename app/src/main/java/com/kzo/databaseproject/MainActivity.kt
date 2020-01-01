@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.util.Log
 import android.widget.Button
 import android.widget.EditText
+import androidx.recyclerview.widget.RecyclerView
 import androidx.room.Insert
 import androidx.room.Room
 import com.kzo.databaseproject.database.AppDatabase
@@ -28,6 +29,8 @@ class MainActivity : AppCompatActivity() {
         var Insert=findViewById<Button>(R.id.btn_insert)
         var Show=findViewById<Button>(R.id.btn_show)
 
+
+
         btn_insert.setOnClickListener {
             Bid=bookId.text.toString().toInt()
             Bname=bookName.text.toString()
@@ -36,6 +39,7 @@ class MainActivity : AppCompatActivity() {
             bookEntity.bookId = Bid
             bookEntity.bookName = Bname
 
+            Thread {
             db.bookDao().saveBooks(bookEntity)
 
             db.bookDao().getAllBooks().forEach()
@@ -44,6 +48,7 @@ class MainActivity : AppCompatActivity() {
                 Log.i("Fetch Records", "Name:  : ${it.bookName}")
                 //txt_view.text=it.bookName
             }
+            }.start()
         }
 
         btn_show.setOnClickListener {

@@ -13,12 +13,14 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:inputType="number"
+        android:hint="Enter bookId"
         />
 
     <EditText
         android:id="@+id/edt_bookName"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        android:hint="Enter bookName"/>
 
     <Button
         android:id="@+id/btn_insert"
